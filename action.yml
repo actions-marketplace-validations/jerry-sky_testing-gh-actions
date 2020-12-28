@@ -1,0 +1,20 @@
+name: 'testing-gh-actions'
+description: 'touches a few files using Bash scripts'
+
+inputs:
+  inp:
+    description: 'some input variable'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - id: 'run a test Bash script'
+      run: ${{ github.action_path }}/test.sh
+      shell: bash
+    - id: 'run a test bash script that requires another file from a local to it directory'
+      run: ${{ github.action_path }}/some-directory/test.sh
+      shell: bash
+    - id: 'print out ‘some input variable’ using Bash'
+      run: echo "${{ inputs.inp }}"
+      shell: bash
