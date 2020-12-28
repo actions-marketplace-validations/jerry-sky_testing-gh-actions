@@ -1,5 +1,9 @@
 name: 'testing-gh-actions'
+author: jerry-sky
 description: 'touches a few files using Bash scripts'
+branding:
+  icon: 'alert-octagon'
+  color: 'orange'
 
 inputs:
   inp:
