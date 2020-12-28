@@ -6,6 +6,9 @@ branding:
   color: 'orange'
 
 inputs:
+  working-directory:
+    description: the directory in which to create these test files
+    required: true
   inp:
     description: 'some input variable'
     required: true
@@ -14,11 +17,14 @@ runs:
   using: 'composite'
   steps:
     - id: 'run a test Bash script'
+      working-directory: ${{ inputs.working-directory }}
       run: ${{ github.action_path }}/test.sh
       shell: bash
     - id: 'run a test bash script that requires another file from a local to it directory'
+      working-directory: ${{ inputs.working-directory }}
       run: ${{ github.action_path }}/some-directory/test.sh
       shell: bash
     - id: 'print out ‘some input variable’ using Bash'
+      working-directory: ${{ inputs.working-directory }}
       run: echo "${{ inputs.inp }}"
       shell: bash
