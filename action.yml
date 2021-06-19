@@ -16,14 +16,17 @@ inputs:
 runs:
   using: 'composite'
   steps:
+
     - name: 'run a test Bash script'
       working-directory: ${{ inputs.working-directory }}
       run: ${{ github.action_path }}/test.sh
       shell: bash
+
     - name: 'run a test bash script that requires another file from a local to it directory'
       working-directory: ${{ inputs.working-directory }}
       run: ${{ github.action_path }}/some-directory/test.sh
       shell: bash
+
     - name: 'print out ‘some input variable’ using Bash'
       working-directory: ${{ inputs.working-directory }}
       run: echo "${{ inputs.inp }}"

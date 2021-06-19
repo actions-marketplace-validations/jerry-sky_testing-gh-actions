@@ -1,0 +1,16 @@
+name: 'Build the website'
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'testing-gh-actions'
+        uses: jerry-sky/testing-gh-actions@master
+        with:
+          working-directory: '.'
+          inp: 'variable with " double quotation mark'
